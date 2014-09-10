@@ -3,4 +3,4 @@
 	url = https://github.com/PMR2/PMR2userdocs.git
 [submodule "MAP"]
 	path = MAP
-	url = git@github.com:ABI-Tutorials/mapclient-docs.git
+	url = https://github.com/ABI-Tutorials/mapclient-docs.git

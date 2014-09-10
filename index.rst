@@ -22,7 +22,6 @@ Contents:
    tutorialOverview
    tutorialOpenCOR
    PMR2/index
-   mapclient/index
    MAP/index
    glossary
    
