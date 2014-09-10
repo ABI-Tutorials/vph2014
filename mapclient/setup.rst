@@ -16,7 +16,8 @@ List of Dependencies
 
 * Python - version 2.7.X is preferred, but version 3.X.Y should also work.
 * PySide - Python bindings for the Qt libraries.
-* requests_oauthlib - Python package for XXXXXXXX
+* pmr2.client - Python package for using webservices on PMR
+* pmr2.wfctrl - Python package for accessing workspaces on PMR
 * rdflib - Python package for working with RDF.
 
 Other Dependencies
