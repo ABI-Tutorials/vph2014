@@ -15,5 +15,11 @@ Contents:
    setup
    autosegmentation
    manualsegmentation
+
+   
+.. toctree::
+   :hidden:
+   
    cellmlsimulation
    pluginauthoring
+   segmentationstep/user

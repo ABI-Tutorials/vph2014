@@ -1,23 +1,5 @@
 .. _mapclient-manualseg:
 
-==================================
-Manually digitising an image stack
-==================================
-
-The purpose of this task is to demonstrate the coolest step that currently exists for the MAP Client and to highlight the reusable nature of the plugins/steps. Be sure to reference the github collection of steps that is being populated and the idea that people should contribute their steps even if they think they are specific to their own work.
-
-#. Configure the image stack to load
-#. Bring up the manual digitisation editor
-
-   * Probably need to provide enough detail that people will be able to use it, possibly link to the relevant documentation in the MAP Client docs?
-   
-#. Digitise some points
-#. Explain how to load up some points that have already been defined (like wow!)
-#. Digitise some more points
-#. Handover to the output to text file step.
-#. and the visualise in Zinc step
-#. Explain how those two output steps are identical to those from the previous task and talk about step-reuse, sharing knowledge, reproducibility, etc.
-
 ======================================================
 Manual segmentation of a three-dimensional image stack
 ======================================================
@@ -171,10 +153,65 @@ Once the execute button has been clicked the workflow will start to traverse the
 Segmentation
 ============
 
-The segmentation step 
+The segmentation step is a tool to assist the user digitise a set of images.  It offers a number of tools to assist the user in digitising their images including a novel feature that allows the digitising plane to be oriented into an arbitrary orientation thus allowing the user to choose the best view of the image's features as possible.  For information on how to use the tools in the segmentation step read the documentation available from the :ref:`segmentation-tool-user`.
+
+In this task we want to digitise the distal femur.  To do this we will first need to use the normal tool to move the image plane up the image stack until we see the distal femur (`MSKJW Figure 10`_).  
+
+.. _`MSKJW Figure 10`:
+
+.. figure:: images/segmentation_tool_distalfemur.png
+   :align: center
+   :width: 40%
+   
+   **MSKJW Figure 10**: Segmentation tool with the image plane moved upwards to show the distal femur.
+   
+The normal tool can be activated using the tab toolbar.  When activated the normal for the plane will be indicated with a yellow arrow.  Use the left mouse button to click on the arrow and with the left mouse button held down drag the plane to the desired location.  When clicked the arrow will change colour to orange to indicate that it has been selected.
+
+Change to the point tool to create some segmentation points.  Segmentation points can be added by holding down the Ctrl key whilst pressing the left mouse button.  The toolbox for the point tool has some options to change the behaviour of the tool, the streaming create option is a quick way to add a series of segmentation points for users with good mouse control.
+
+.. _`MSKJW Figure 11`:
+
+.. figure:: images/segmentation_tool_segmentpoints.png
+   :align: center
+   :width: 40%
+   
+   **MSKJW Figure 11**: Segmenting the distal femur using segmentation points.
+
+For mapping out curved features the curve tool reduces the number mouse clicks required by adding in interpolated Bezier points between the control points.  Use Ctrl and the left mouse button to place control points and Ctrl and the right mouse button to finish.
+
+.. _`MSKJW Figure 12`:
+
+.. figure:: images/segmentation_tool_segmentcurve.png
+   :align: center
+   :width: 40%
+   
+   **MSKJW Figure 12**: Segmenting the distal femur using the curve tool.
+
+If the femur edges are hard to determine a change in plane orientation may be required for this purpose we have the orientation tool.  To use the orientation tool click on it in the tabs toolbar, when using the orientation tool the image plane itself can be oriented using the left mouse button.  The centre of rotation for the plane is the purple sphere, if you want to change the point of rotation use the left mouse button and click on the sphere.  While the mouse button is held down the sphere will follow the mouse movements.  Release the mouse and the plane can now be rotated around the new rotation point.  When clicked the sphere will change colour to red to indicate that it has been selected.
+
+.. _`MSKJW Figure 13`:
+
+.. figure:: images/segmentation_tool_repositionsphere.png
+   :align: center
+   :width: 40%
+   
+   **MSKJW Figure 13**: Moving the centre of rotation when using the orientation tool.
+
+All the segmentation points (except blue interpolated Bezier points) can be selected and moved by pressing the Ctrl key and using the left mouse button to click on them.  You can also press the shift key and using the left mouse button select multiple segmentation points.  You can only select segmentation points for the tool that is currently in operation.
+
+A feature to try out is the push/pull feature of moving a group of segmentation points a set distance in the direction of the plane normal.  This is useful when segmenting features that don't vary much over small distances such as the shaft of a femur.
+
+Feel free to experiment as the segmentation step has full undo/redo capabilities.
+
+We can also load a previous session or save the current one.  On the USB sticks there is a sample segmentation of the distal femur available, put this file into the kj_segmentation directory.  With the File toolbox open click the load button, the saved session will be loaded into the current session.
+All previous work will be lost so if you want to keep it first save your current session before loading the sample file.  Rename the saved file and then you are free to setup the sample segmentation.
 
 Check Output
 ============
 
-We can now examine the output of the workflow using any text editor.  The output is stored in a file called point_cloud.txt in a directory bv_point_cloud which can be found under the workflow directory.
+We can now examine the output of the workflow using any text editor.  The output is stored in a file called point_cloud.txt in a directory kj_point_cloud which can be found under the workflow directory.
 
+
+.. todo::
+
+#. Explain how those two output steps are identical to those from the previous task and talk about step-reuse, sharing knowledge, reproducibility, etc.
